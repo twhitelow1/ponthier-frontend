@@ -23,11 +23,11 @@
             <div class="collapse navbar-collapse ml-auto mt-2 mt-lg-2 justify-content-end" id="mainNav">
               <div class="navbar-nav">
                 <a class="nav-link active" href="#">HOME <span class="sr-only">(current)</span></a>
-                <a class="nav-link" href="#about">ABOUT</a>
-                <a class="nav-link" href="#services">SERVICES</a>
-                <a class="nav-link" href="#beforeafter">PHOTOS</a>
-                <a class="nav-link" href="#testimonials">TESTIMONIALS</a>
-                <a class="nav-link" href="#contact">CONTACT</a>
+                <a class="nav-link" href="/#about">ABOUT</a>
+                <a class="nav-link" href="/#services">SERVICES</a>
+                <a class="nav-link" href="/#beforeafter">PHOTOS</a>
+                <a class="nav-link" href="/#testimonials">TESTIMONIALS</a>
+                <a class="nav-link" href="/#contact">CONTACT</a>
               </div>
             </div>
             <!--End Bootstrap Menu Links-->

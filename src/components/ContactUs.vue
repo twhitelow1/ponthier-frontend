@@ -5,7 +5,7 @@
         <div class="col-sm">
           <h2 class="text-center py-4">Contact Us</h2>
           <p class="text-center h4">This form if for general inquiries.</p>
-          <a href="quote.html"><p class="text-center text-warning h5">Click This Link For A Free Quote</p></a><br>
+          <a href="/quote"><p class="text-center text-warning h5">Click This Link For A Free Quote</p></a><br>
         </div>
       </div>
       <div class="row justify-content-center">

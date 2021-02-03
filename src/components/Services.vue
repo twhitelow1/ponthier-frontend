@@ -98,7 +98,7 @@
       </div>
       <!--/Decorative Stone Wash-->
     </div>
-  <a href="quote.html"><p class="text-center text-warning h5">Click This Link For A Free Quote</p></a><br>
+  <a href="/quote"><p class="text-center text-warning h5">Click This Link For A Free Quote</p></a><br>
   </div>
   <!--End Services Section-->
 </template>
