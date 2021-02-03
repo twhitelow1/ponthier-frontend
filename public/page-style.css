@@ -111,10 +111,10 @@ footer {
 /* Services Section Styles  */
 
 
-.services {
+/* .services {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-}
+} */
 
 .services-card {
   background-color: transparent;
@@ -381,13 +381,13 @@ footer {
     padding: 4rem 2rem 4rem 4rem;
     font-size: 1.5em;
   }
-  .about{
+  /* .about{
     max-width: 100%;
     margin: 0 auto;
   }
   .about p{
     font-size: 1.5em;
-  }
+  } */
 
   .navbar-light .navbar-brand {
     margin: 0;
@@ -430,11 +430,6 @@ footer {
 
 /* Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {
-
-  .about{
-    max-width: 90%;
-  }
-
   .quote{
     max-width: 800px !important;
   }
