@@ -2,6 +2,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Home from '../views/Home.vue';
 import Quote from '../views/Quote.vue';
+import Admin from '../views/Admin.vue';
 
 Vue.use(VueRouter);
 
@@ -15,6 +16,11 @@ const routes = [
     path: '/quote',
     name: 'Quote',
     component: Quote
+  },
+  {
+    path: '/acp',
+    name: 'Admin',
+    component: Admin
   },
   {
     path: '/about',

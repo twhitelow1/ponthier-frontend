@@ -51,7 +51,7 @@ body {
   text-align: center;
 }
 
-#about {
+#about, #admin {
   background-color: white;
   padding: 2em;
   font-size: 1em;
