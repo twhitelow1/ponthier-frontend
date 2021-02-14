@@ -5,14 +5,14 @@
         <h2 class="text-center py-4 display-2">Fill out the details below to get your instant quote</h2>
       </div>
       <div class="row justify-content-center about quote">
-        <form class="border border-light p-2 quote w-90">
+        <form class="border border-light p-2 quote w-90" v-on:submit.prevent="createQuote()">
           <p class="h4 mb-10 text-center">Your Details</p>
           <label for="name">Full Name</label>
-          <input type="text" id="name" class="form-control mb-4" placeholder="Please enter your name...">
+          <input v-model="newClientName" type="text" id="name" class="form-control mb-4" placeholder="Please enter your name...">
           <label for="email">Email</label>
-          <input type="email" id="email" class="form-control mb-4" placeholder="name@example.com">
+          <input v-model="newEmail" type="email" id="email" class="form-control mb-4" placeholder="name@example.com">
           <label for="phone">Phone Number</label>
-          <input type="phone" id="phone" class="form-control mb-4" placeholder="(555) 555-555">
+          <input v-model="newPhone" type="phone" id="phone" class="form-control mb-4" placeholder="(555) 555-555">
           <!-- Start Select Services Section-->
           <div class="form-group">
             <p class="h4 mb-10 text-center">Select Services</p>
@@ -20,29 +20,25 @@
               <div class="form-row">
                 <div class="col-sm">
                   <div class="form-check form-check">
-                    <input class="form-check-input" type="checkbox" id="roofsercices" value="roof-services">
+                    <input v-model="newRoofServices" class="form-check-input" type="checkbox" id="roofsercices" value="roof-services">
                     <label class="form-check-label" for="roofsercices">Roof Services</label>
                   </div>
                   <div class="form-check form-check">
-                    <input class="form-check-input" type="checkbox" id="guttercleaning" value="gutter-cleaning">
+                    <input v-model="newGutterCleaning" class="form-check-input" type="checkbox" id="guttercleaning" value="gutter-cleaning">
                     <label class="form-check-label" for="guttercleaning">Gutter Cleaning</label>
-                  </div>
-                  <div class="form-check form-check">
-                    <input class="form-check-input" type="checkbox" id="dryerventcleaning" value="dryer-vent-cleaning">
-                    <label class="form-check-label" for="dryerventcleaning">Dryer Vent Cleaning</label>
                   </div>
                 </div>
                 <div class="col-sm">
                   <div class="form-check form-check">
-                    <input class="form-check-input" type="checkbox" id="house-building-wash" value="house-building-wash">
+                    <input v-model="newBuildingSqft" class="form-check-input" type="checkbox" id="house-building-wash" value="house-building-wash">
                     <label class="form-check-label" for="house-building-wash">House/Building Wash</label>
                   </div>
                   <div class="form-check form-check">
-                    <input class="form-check-input" type="checkbox" id="pool-enclosures" value="pool-enclosures">
+                    <input v-model="newPoolEnclosures"  class="form-check-input" type="checkbox" id="pool-enclosures" value="pool-enclosures">
                     <label class="form-check-label" for="pool=enclosures">Pool Enclosures</label>
                   </div>
                   <div class="form-check form-check">
-                    <input class="form-check-input" type="checkbox" id="driveway-flat-surfaces" value="driveway-flat-services">
+                    <input v-model="newDriveway" class="form-check-input" type="checkbox" id="driveway-flat-surfaces" value="driveway-flat-services">
                     <label class="form-check-label" for="driveway-flat-surfaces">Driveway/Flat Surfaces</label>
                   </div>
                 </div>
@@ -56,13 +52,13 @@
             <div class="container">
               <div class="form-row">
                 <label for="projectTypeSelect">What type of project is this?</label>
-                <select class="form-control" id="projectTypeSelect">
+                <select v-model="newProjectType" class="form-control" id="projectTypeSelect">
                   <option>Pick Project Type</option>
                   <option>Commercial</option>
                   <option>Residential</option>
                 </select>
                 <label for="buildingStories">How many floors are there?</label>
-                <select class="form-control" id="buildingStories">
+                <select v-model="newFloors"  class="form-control" id="buildingStories">
                   <option>Select The Number of Floors </option>
                   <option>1 story</option>
                   <option>2 stories</option>
@@ -73,7 +69,7 @@
                   <div class="form-row form-group my-2">
                     <label for="sqft" class="col-ms-2 col-form-label">Building Sqft</label>
                     <div class="col-sm-8">
-                      <input type="text" id="sqft" placeholder="sqft" class="form-control mb-4 ">
+                      <input v-model="newBuildingSqft" type="text" id="sqft" placeholder="sqft" class="form-control mb-4 ">
                     </div>
                   </div>
                 </div>
@@ -86,7 +82,7 @@
             <div class="container">
               <div class="form-row">
                 <label for="roofType">What Material Is The Roof Made Of?</label>
-                <select class="form-control" id="roofType">
+                <select v-model="newRoofMaterial" class="form-control" id="roofType">
                   <option>Select A Roof Type</option>
                   <option>Asphalt Shingle</option>
                   <option>Tile</option>
@@ -95,7 +91,7 @@
                   <option>Other</option>
                 </select>
                 <label for="roofPitch">How's The Walkability/Pitch of the Roof?</label>
-                <select class="form-control" id="roofPitch">
+                <select v-model="newPitchOfRoof"  class="form-control" id="roofPitch">
                   <option>Select Roof Pitch</option>
                   <option>Easy</option>
                   <option>Difficult</option>
@@ -104,7 +100,7 @@
                 <label>Is There A Detached Garage?    </label>
                 <div class="form-group">
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="detachedGarageYes" id="detachedGarageYes" value="yes">
+                    <input v-model="newGarage" class="form-check-input" type="radio" name="detachedGarageYes" id="detachedGarageYes" value="yes">
                     <label class="form-check-label" for="detachedGarageYes">Yes</label>
                   </div>
                   <div class="form-check form-check-inline">
@@ -122,7 +118,7 @@
             <div class="container">
               <div class="form-row">
                 <label for="exteriorType">Exterior Material?</label>
-                <select class="form-control" id="exteriorType">
+                <select v-model="newExtType"  class="form-control" id="exteriorType">
                   <option>Select Exterior Type</option>
                   <option>Brick</option>
                   <option>Drywal/EIFS</option>
@@ -138,7 +134,7 @@
                 <label for="detachedGarageHouseWash">Is There A Detached Garage?</label>
                 <div class="form-group">
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="detachedGarageWashYes" id="detachedGarageWashYes" value="yes">
+                    <input v-model="newGarage" class="form-check-input" type="radio" name="detachedGarageWashYes" id="detachedGarageWashYes" value="yes">
                     <label class="form-check-label" for="detachedGarageWashYes">Yes</label>
                   </div>
                   <div class="form-check form-check-inline">
@@ -158,7 +154,7 @@
                 <label for="detachedGarageHouseWash">Will The Guards Need To Be Removed and Reinstalled?</label>
                 <div class="form-group">
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="gutterRemovalNeededYes" id="gutterRemovalNeededYes" value="yes">
+                    <input v-model="newGutterGuardRemove" class="form-check-input" type="radio" name="gutterRemovalNeededYes" id="gutterRemovalNeededYes" value="yes">
                     <label class="form-check-label" for="gutterRemovalNeededYes">Yes</label>
                   </div>
                   <div class="form-check form-check-inline">
@@ -171,8 +167,8 @@
                 <label for="detachedGarageHouseWash">Select "YES" if you have gutter guards, but just want them blown off and rinsed through the cracks.</label>
                 <div class="form-group">
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="gutterBlowYes" id="gutterBlowYes" value="yes">
-                    <label class="form-check-label" for="gutterBlowYes">Yes</label>
+                    <input v-model="newGutterGuardRinse" class="form-check-input" type="radio" name="gutterBlowYes" id="gutterBlowYes" value="yes">
+                      <label class="form-check-label" for="gutterBlowYes">Yes</label>
                   </div>
                   <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="gutterBlowNo" id="gutterBlowNo" value="no">
@@ -190,5 +186,68 @@
     <!--End quote section-->
 </template>
 <script>
-export default {};
+import axios from "axios";
+export default {
+  data: function () {
+    return {
+      newClientName: "",
+      newEmail: "",
+      newPhone: "",
+      newProjectType: "",
+      newFloors: "",
+      newBuildingSqft: "",
+      newRoofMaterial: "",
+      newPitchOfRoof: "",
+      newGarage: "",
+      newExtType: "",
+      newFltSurfaceSqft: "",
+      newEnclosureHeight: "",
+      newPoolDeckType: "",
+      newGutterGuardRemove: "",
+      newGutterGuardRinse: "",
+      newRoofServices: "",
+      newGutterCleaning: "",
+      newPoolEnclosures: "",
+      newHouseWash: "",
+      newDriveway: "",
+    };
+  },
+  created: function () {},
+  methods: {
+    createQuote: function () {
+      var params = {
+        clientName: this.newClientName,
+        email: this.newEmail,
+        phone: this.newPhone,
+        projectType: this.newProjectType,
+        floors: this.newFloors,
+        buildingSqft: this.newBuildingSqft,
+        roofMaterial: this.newRoofMaterial,
+        pitchOfRoof: this.newPitchOfRoof,
+        garage: this.newGarage,
+        extType: this.newExtType,
+        fltSurfaceSqft: this.newFltSurfaceSqft,
+        enclosureHeight: this.newEnclosureHeight,
+        poolDeckType: this.newPoolDeckType,
+        gutterGuardRemove: this.newGutterGuardRemove,
+        gutterGuardRinse: this.newGutterGuardRinse,
+        roofServices: this.newRoofServices,
+        gutterCleaning: this.newGutterCleaning,
+        houseWash: this.newHouseWash,
+        poolEnclosures: this.newPoolEnclosures,
+        driveway: this.newDriveway,
+      };
+      axios
+        .post("/api/quotes", params)
+        .then((response) => {
+          console.log("quotes create", response);
+          this.$router.push("/");
+        })
+        .catch((error) => {
+          console.log("quote create error", error.response);
+          this.errors = error.response.data.errors;
+        });
+    },
+  },
+};
 </script>

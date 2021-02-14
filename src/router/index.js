@@ -1,9 +1,10 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Home from '../views/Home.vue';
-import Quote from '../views/Quote.vue';
+import QuotesNew from '../views/QuotesCreate.vue';
 import Admin from '../views/Admin.vue';
 import QuotesIndex from '../views/QuotesIndex.vue';
+import QuoteShow from '../views/QuotesShow.vue'
 
 Vue.use(VueRouter);
 
@@ -19,9 +20,14 @@ const routes = [
     component: QuotesIndex
   },
   {
-    path: '/quote',
-    name: 'Quote',
-    component: Quote
+    path: '/quote-new',
+    name: 'quote-new',
+    component: QuotesNew,
+  },
+  {
+    path: '/quotes/:id',
+    name: 'quote-show',
+    component: QuoteShow,
   },
   {
     path: '/acp',
