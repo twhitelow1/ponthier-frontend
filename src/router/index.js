@@ -3,6 +3,7 @@ import VueRouter from 'vue-router';
 import Home from '../views/Home.vue';
 import Quote from '../views/Quote.vue';
 import Admin from '../views/Admin.vue';
+import QuotesIndex from '../views/QuotesIndex.vue';
 
 Vue.use(VueRouter);
 
@@ -11,6 +12,11 @@ const routes = [
     path: '/',
     name: 'Home',
     component: Home
+  },
+  {
+    path: '/quotes',
+    name: 'quotes-index',
+    component: QuotesIndex
   },
   {
     path: '/quote',

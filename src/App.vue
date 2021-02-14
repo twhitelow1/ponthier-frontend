@@ -39,7 +39,8 @@
       <!--Start Footer-->
       <footer class="d-flex flex-column align-items-center p-2">
         Copyright 2020 Ponthier & Son.
-        Website Developed by <a href="https://todd.whitelow.tech">Todd Whitelow Jr.</a>
+        Website Developed by <a href="https://todd.whitelow.tech">Todd Whitelow Jr.</a><br />
+        <router-link to="/quotes">Quotes</router-link>
       </footer>
       <!--End Footer-->
     </div>
