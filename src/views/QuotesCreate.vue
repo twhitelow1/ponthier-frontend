@@ -20,11 +20,11 @@
               <div class="form-row">
                 <div class="col-sm">
                   <div v-for="service in services" class="form-check">
-                    <input v-model="checkedServices" class="form-check-input" type="checkbox" :id="service.title" :value="service" @change="clickServiceCheckbox($event)">
+                    <input v-model="checkedServices" class="form-check-input" type="checkbox" :id="service.title" :value="service.id" @change="clickServiceCheckbox($event, service.id)">
                     <label class="form-check-label" :for="service.title">{{service.title}}</label>
                   </div>
                   <!-- For Debugg purposes -->
-                  {{ checkedServices }}
+                  <!-- {{ checkedServices }} -->
                   <!-- <div class="form-check form-check">
                     <input v-model="newRoofServices" class="form-check-input" type="checkbox" id="roofsercices" value="roof-services">
                     <label class="form-check-label" for="roofsercices">Roof Services</label>
@@ -121,7 +121,7 @@
           </div>
           <!-- End Roof Cleaning Section -->
           <!-- Start House/Building Section -->
-          <div class="form-group" id="house-washing">
+          <div class="form-group" id="house-washing" v-if="services[4].visibility">
             <p class="h4 mb-10 text-center">House/Building Wash</p>
             <div class="container">
               <div class="form-row">
@@ -138,6 +138,17 @@
                   <option>Other</option>
                 </select>
               </div>
+              <div class="form-row">
+                <label for="doorType">Type of Door</label>
+                <select v-model="newBuildingDoorType"  class="form-control" id="doorType">
+                  <option>Select Door Type</option>
+                  <option>Wood</option>
+                  <option>Fiberglass Gel Coated</option>
+                  <option>Glass</option>
+                  <option>Steel</option>
+                  <option>Other</option>
+                </select>
+              </div>
             
             </div>
           </div>
@@ -147,30 +158,10 @@
             <p class="h4 mb-10 text-center">Building Gutters Wash</p>
             <div class="container">
               <div class="form-row">
-                <label for="detachedGarageHouseWash">Will The Guards Need To Be Removed and Reinstalled?</label>
-                <div class="form-group">
-                  <div class="form-check form-check-inline">
-                    <input v-model="newGutterGuardRemove" class="form-check-input" type="radio" name="gutterRemovalNeededYes" id="gutterRemovalNeededYes" value="yes">
-                    <label class="form-check-label" for="gutterRemovalNeededYes">Yes</label>
+                <div class="form-row form-group my-2m">
+                    <label for="sqft" class="col-ms-2 col-form-label">Total Sqft of gutters?</label>
+                      <input v-model="newGuttersSqft" type="text" id="gutterSqft" placeholder="sqft" class="form-control mb-4 ">
                   </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="gutterRemovalNeededNo" id="gutterRemovalNeededNo" value="no">
-                    <label class="form-check-label" for="gutterRemovalNeededNo">No</label>
-                  </div>
-                </div>
-              </div>
-              <div class="form-row">
-                <label for="detachedGarageHouseWash">Select "YES" if you have gutter guards, but just want them blown off and rinsed through the cracks.</label>
-                <div class="form-group">
-                  <div class="form-check form-check-inline">
-                    <input v-model="newGutterGuardRinse" class="form-check-input" type="radio" name="gutterBlowYes" id="gutterBlowYes" value="yes">
-                      <label class="form-check-label" for="gutterBlowYes">Yes</label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="gutterBlowNo" id="gutterBlowNo" value="no">
-                    <label class="form-check-label" for="gutterBlowNo">No</label>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
@@ -200,9 +191,11 @@ export default {
       newEnclosureHeight: "",
       newPoolDeckType: "",
       newGutterGuardRemove: "",
+      newBuildingDoorType: "",
       newGutterGuardRinse: "",
       newRoofServices: "",
       newGutterCleaning: "",
+      newGutterSqft: "",
       newPoolEnclosures: "",
       newHouseWash: "",
       newDriveway: "",
@@ -244,18 +237,9 @@ export default {
   },
   created: function () {},
   methods: {
-    clickServiceCheckbox: function (e) {
-      console.log(this.checkedServices);
-      this.services.forEach((service) => {
-        this.checkedServices.forEach((checked) => {
-          if (service.id === checked.id) {
-            this.services[service.id - 1].visibility = true;
-          } else {
-            this.services[service.id - 1].visibility = false;
-          }
-        });
-        console.log(`services: ${this.services}`);
-      });
+    clickServiceCheckbox: function (e, id) {
+      this.services[id - 1].visibility = !this.services[id - 1].visibility;
+      console.log(`services: ${this.services}`);
     },
     createQuote: function () {
       var params = {
