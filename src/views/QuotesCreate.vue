@@ -121,7 +121,7 @@
           </div>
           <!-- End Roof Cleaning Section -->
           <!-- Start House/Building Section -->
-          <div class="form-group" id="house-washing" v-if="services[4].visibility">
+          <div class="form-group" id="house-washing" v-if="services[3].visibility">
             <p class="h4 mb-10 text-center">House/Building Wash</p>
             <div class="container">
               <div class="form-row">
@@ -162,6 +162,31 @@
                     <label for="sqft" class="col-ms-2 col-form-label">Total Sqft of gutters?</label>
                       <input v-model="newGuttersSqft" type="text" id="gutterSqft" placeholder="sqft" class="form-control mb-4 ">
                   </div>
+              </div>
+            </div>
+          </div>
+          <!-- End Gutter Cleaning Section -->
+          <!-- Start Driveway/Flat Surfaces Section -->
+          <div class="form-group" id="drivewat-flat" v-if="services[4].visibility">
+            <p class="h4 mb-10 text-center">Driveway/Flat Surfaces Cleaning</p>
+            <div class="container">
+              <div class="form-row">
+                <div class="form-row form-group my-2m">
+                    <label for="sqft" class="col-ms-2 col-form-label">Total Sqft of Driveway/Flat Surfaces?</label>
+                      <input v-model="newFltSurfaceSqft" type="text" id="flatSurfaceSqft" placeholder="sqft" class="form-control mb-4 ">
+                  </div>
+              </div>
+              <div class="form-row">
+                <div class="form-row form-group my-2m">
+                  <label for="buildingStories">What size drive way?</label>
+                  <select v-model="newDrivewaySize"  class="form-control" id="drivewaySize">
+                    <option>Select</option>
+                    <option>1 car</option>
+                    <option>2 car</option>
+                    <option>3 car</option>
+                    <option>4 car</option>
+                  </select>
+                </div>
               </div>
             </div>
           </div>
@@ -219,16 +244,11 @@ export default {
         },
         {
           id: 4,
-          title: "Pool Enclosures",
-          visibility: false,
-        },
-        {
-          id: 5,
           title: "House/Building Wash",
           visibility: false,
         },
         {
-          id: 6,
+          id: 5,
           title: "Driveway/Flat Surfaces",
           visibility: false,
         },
