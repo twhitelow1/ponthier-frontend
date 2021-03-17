@@ -139,6 +139,17 @@
                 </select>
               </div>
               <div class="form-row">
+                <label for="doorType">Will the screens from the windows need to be removed and tracks cleaned?</label>
+                <select v-model="newScreenRemoval"  class="form-control" id="screenRemoval">
+                  <option>Select Door Type</option>
+                  <option>Wood</option>
+                  <option>Fiberglass Gel Coated</option>
+                  <option>Glass</option>
+                  <option>Steel</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div class="form-row">
                 <label for="doorType">Type of Door</label>
                 <select v-model="newBuildingDoorType"  class="form-control" id="doorType">
                   <option>Select Door Type</option>
@@ -149,7 +160,6 @@
                   <option>Other</option>
                 </select>
               </div>
-            
             </div>
           </div>
           <!-- End House/Building Section -->
