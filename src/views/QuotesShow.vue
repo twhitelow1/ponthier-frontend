@@ -2,11 +2,17 @@
   <div class="quotes-show">
     <div class="container-fluid py-3 section" id="about">
       <div class="row justify-content-center">
-        <h1>Single Quote</h1>
+        <h1>{{ quote.client_name }}'s Quote</h1>
       </div>
       <div class="column justify-content-center about quote">
-    <h2>{{ quote.name }}</h2>
+    <h4 class="text-center"><router-link to="/acp">Back To Admin Panel</router-link></h4>
     <img v-bind:src="quote.url" v-bind:alt="quote.name" />
+    <table>
+      <tr>
+        <td>Client Name</td>
+        <td>{{ quote.client_name }}</td>
+      </tr>
+    </table>
     <p>Client Name: {{ quote.client_name }}</p>
     <p>Phone: {{ quote.phone }}</p>
     <p>Email: {{ quote.email }}</p>

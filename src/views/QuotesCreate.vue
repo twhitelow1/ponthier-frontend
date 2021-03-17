@@ -19,7 +19,13 @@
             <div class="container">
               <div class="form-row">
                 <div class="col-sm">
-                  <div class="form-check form-check">
+                  <div v-for="service in services" class="form-check">
+                    <input v-model="checkedServices" class="form-check-input" type="checkbox" :id="service.title" :value="service" @change="clickServiceCheckbox($event)">
+                    <label class="form-check-label" :for="service.title">{{service.title}}</label>
+                  </div>
+                  <!-- For Debugg purposes -->
+                  {{ checkedServices }}
+                  <!-- <div class="form-check form-check">
                     <input v-model="newRoofServices" class="form-check-input" type="checkbox" id="roofsercices" value="roof-services">
                     <label class="form-check-label" for="roofsercices">Roof Services</label>
                   </div>
@@ -27,8 +33,12 @@
                     <input v-model="newGutterCleaning" class="form-check-input" type="checkbox" id="guttercleaning" value="gutter-cleaning">
                     <label class="form-check-label" for="guttercleaning">Gutter Cleaning</label>
                   </div>
+                  <div class="form-check form-check">
+                    <input v-model="newRustRemoval" class="form-check-input" type="checkbox" id="rustremoval" value="rust-removal">
+                    <label class="form-check-label" for="rustremoval">Rust Removal</label>
+                  </div> -->
                 </div>
-                <div class="col-sm">
+                <!-- <div class="col-sm">
                   <div class="form-check form-check">
                     <input v-model="newBuildingSqft" class="form-check-input" type="checkbox" id="house-building-wash" value="house-building-wash">
                     <label class="form-check-label" for="house-building-wash">House/Building Wash</label>
@@ -41,13 +51,13 @@
                     <input v-model="newDriveway" class="form-check-input" type="checkbox" id="driveway-flat-surfaces" value="driveway-flat-services">
                     <label class="form-check-label" for="driveway-flat-surfaces">Driveway/Flat Surfaces</label>
                   </div>
-                </div>
+                </div> -->
               </div>
             </div>
           </div>
           <!-- End Services Section -->
           <!-- Start Property Info Section -->
-          <div class="form-group">
+          <div class="form-group" id="property-info">
             <p class="h4 mb-10 text-center">Property Information</p>
             <div class="container">
               <div class="form-row">
@@ -65,19 +75,19 @@
                   <option>3 stories</option>
                   <option>4+ stories</option>
                 </select>
-                
                   <div class="form-row form-group my-2">
                     <label for="sqft" class="col-ms-2 col-form-label">Building Sqft</label>
                     <div class="col-sm-8">
                       <input v-model="newBuildingSqft" type="text" id="sqft" placeholder="sqft" class="form-control mb-4 ">
                     </div>
                   </div>
-                </div>
+              </div>
+
             </div>
           </div>
           <!-- End Property Info Section -->
           <!-- Start Roof Cleaning Section -->
-          <div class="form-group">
+          <div class="form-group" id="roof-cleaning" v-if="services[0].visibility">
             <p class="h4 mb-10 text-center">Roof Cleaning</p>
             <div class="container">
               <div class="form-row">
@@ -93,27 +103,25 @@
                 <label for="roofPitch">How's The Walkability/Pitch of the Roof?</label>
                 <select v-model="newPitchOfRoof"  class="form-control" id="roofPitch">
                   <option>Select Roof Pitch</option>
-                  <option>Easy</option>
-                  <option>Difficult</option>
-                  <option>Impossible</option>
+                  <option>1/12</option>
+                  <option>2/12</option>
+                  <option>3/12</option>
+                  <option>4/12</option>
+                  <option>5/12</option>
+                  <option>6/12</option>
+                  <option>7/12</option>
+                  <option>8/12</option>
+                  <option>9/12</option>
+                  <option>10/12</option>
+                  <option>11/12</option>
+                  <option>12/12</option>
                 </select>
-                <label>Is There A Detached Garage?    </label>
-                <div class="form-group">
-                  <div class="form-check form-check-inline">
-                    <input v-model="newGarage" class="form-check-input" type="radio" name="detachedGarageYes" id="detachedGarageYes" value="yes">
-                    <label class="form-check-label" for="detachedGarageYes">Yes</label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="detachedGarageNo" id="detachedGarageNo" value="no">
-                    <label class="form-check-label" for="detachedGarageNo">No</label>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
           <!-- End Roof Cleaning Section -->
           <!-- Start House/Building Section -->
-          <div class="form-group">
+          <div class="form-group" id="house-washing">
             <p class="h4 mb-10 text-center">House/Building Wash</p>
             <div class="container">
               <div class="form-row">
@@ -130,24 +138,12 @@
                   <option>Other</option>
                 </select>
               </div>
-              <div class="form-row">
-                <label for="detachedGarageHouseWash">Is There A Detached Garage?</label>
-                <div class="form-group">
-                  <div class="form-check form-check-inline">
-                    <input v-model="newGarage" class="form-check-input" type="radio" name="detachedGarageWashYes" id="detachedGarageWashYes" value="yes">
-                    <label class="form-check-label" for="detachedGarageWashYes">Yes</label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="detachedGarageWashNo" id="detachedGarageWashNo" value="no">
-                    <label class="form-check-label" for="detachedGarageWashNo">No</label>
-                  </div>
-                </div>
-              </div>
+            
             </div>
           </div>
           <!-- End House/Building Section -->
-          <!-- Start Gutters Section -->
-          <div class="form-group">
+          <!-- Start Gutter Cleaning Section -->
+          <div class="form-group" id="gutter-cleaning" v-if="services[1].visibility">
             <p class="h4 mb-10 text-center">Building Gutters Wash</p>
             <div class="container">
               <div class="form-row">
@@ -178,7 +174,7 @@
               </div>
             </div>
           </div>
-          <!-- End Gutters Section -->
+          <!-- End Gutter Cleaning Section -->
           <button class="btn btn-info btn-block my-4" type="submit">Submit</button>
         </form>
       </div>
@@ -210,10 +206,57 @@ export default {
       newPoolEnclosures: "",
       newHouseWash: "",
       newDriveway: "",
+      newRustRemoval: "",
+      checkedServices: [],
+      services: [
+        {
+          id: 1,
+          title: "Roof Services",
+          visibility: false,
+        },
+        {
+          id: 2,
+          title: "Gutter Cleaning",
+          visibility: false,
+        },
+        {
+          id: 3,
+          title: "Rust Removal",
+          visibility: false,
+        },
+        {
+          id: 4,
+          title: "Pool Enclosures",
+          visibility: false,
+        },
+        {
+          id: 5,
+          title: "House/Building Wash",
+          visibility: false,
+        },
+        {
+          id: 6,
+          title: "Driveway/Flat Surfaces",
+          visibility: false,
+        },
+      ],
     };
   },
   created: function () {},
   methods: {
+    clickServiceCheckbox: function (e) {
+      console.log(this.checkedServices);
+      this.services.forEach((service) => {
+        this.checkedServices.forEach((checked) => {
+          if (service.id === checked.id) {
+            this.services[service.id - 1].visibility = true;
+          } else {
+            this.services[service.id - 1].visibility = false;
+          }
+        });
+        console.log(`services: ${this.services}`);
+      });
+    },
     createQuote: function () {
       var params = {
         clientName: this.newClientName,
@@ -236,6 +279,7 @@ export default {
         houseWash: this.newHouseWash,
         poolEnclosures: this.newPoolEnclosures,
         driveway: this.newDriveway,
+        rustRemoval: this.newRustRemoval,
       };
       axios
         .post("/api/quotes", params)

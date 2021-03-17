@@ -17,7 +17,7 @@
           <tbody> 
             <tr v-for="quote in quotes">
               <th scope="row"> {{quote.id}}</th>
-              <td>{{ quote.client_name }}</td>
+              <td><a v-bind:href="'/quotes/'+ quote.id" :key="quote.id">{{ quote.client_name }}</a></td>
               <td>{{ quote.email }}</td>
               <td>{{ quote.phone }}</td>
             </tr>
