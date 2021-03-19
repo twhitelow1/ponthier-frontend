@@ -5,24 +5,30 @@
         <h2 class="text-center py-4 display-2">Fill out the details below to get your instant quote</h2>
       </div>
       <div class="row justify-content-center about quote">
-        <form class="border border-light p-2 quote w-90" v-on:submit.prevent="createQuote()">
-          <p class="h4 mb-10 text-center">Your Details</p>
-          <label for="name">Full Name</label>
-          <input v-model="newClientName" type="text" id="name" class="form-control mb-4" placeholder="Please enter your name...">
-          <label for="email">Email</label>
-          <input v-model="newEmail" type="email" id="email" class="form-control mb-4" placeholder="name@example.com">
-          <label for="phone">Phone Number</label>
-          <input v-model="newPhone" type="phone" id="phone" class="form-control mb-4" placeholder="(555) 555-555">
+        <form class="p-2 quote w-90" v-on:submit.prevent="createQuote()">
+          <v-card class="form-group p-3">
+            <p class="h4 mb-10 text-center">Your Details</p>
+            <label for="name">Full Name</label>
+            <input v-model="newClientName" type="text" id="name" class="form-control mb-4" placeholder="Please enter your name...">
+            <label for="email">Email</label>
+            <input v-model="newEmail" type="email" id="email" class="form-control mb-4" placeholder="name@example.com">
+            <label for="phone">Phone Number</label>
+            <input v-model="newPhone" type="phone" id="phone" class="form-control mb-4" placeholder="(555) 555-555">
+          </v-card>
           <!-- Start Select Services Section-->
-          <div class="form-group">
+          <v-card class="form-group p-3">
             <p class="h4 mb-10 text-center">Select Services</p>
             <div class="container">
               <div class="form-row">
                 <div class="col-sm">
-                  <div v-for="service in services" class="form-check">
-                    <input v-model="checkedServices" class="form-check-input" type="checkbox" :id="service.title" :value="service.id" @change="clickServiceCheckbox($event, service.id)">
-                    <label class="form-check-label" :for="service.title">{{service.title}}</label>
-                  </div>
+                    <div v-for="service in services" class="form-check">
+                      <v-col cols="4">
+                        <v-checkbox v-model="checkedServices" :id="service.title" @change="clickServiceCheckbox($event, service.id)" :value="service.id">
+                        <!-- <input v-model="checkedServices" class="form-check-input" type="checkbox" :id="service.title" :value="service.id" @change="clickServiceCheckbox($event, service.id)"> -->
+                        <template v-slot:label><label class="form-check-label" :for="service.title">{{service.title}}</label></template>
+                        </v-checkbox>
+                      </v-col>
+                    </div>
                   <!-- For Debugg purposes -->
                   <!-- {{ checkedServices }} -->
                   <!-- <div class="form-check form-check">
@@ -54,10 +60,10 @@
                 </div> -->
               </div>
             </div>
-          </div>
+          </v-card>
           <!-- End Services Section -->
           <!-- Start Property Info Section -->
-          <div class="form-group" id="property-info">
+          <v-card class="form-group p-3" id="property-info">
             <p class="h4 mb-10 text-center">Property Information</p>
             <div class="container">
               <div class="form-row">
@@ -84,10 +90,10 @@
               </div>
 
             </div>
-          </div>
+          </v-card>
           <!-- End Property Info Section -->
           <!-- Start Roof Cleaning Section -->
-          <div class="form-group" id="roof-cleaning" v-if="services[0].visibility">
+          <v-card class="form-group p-3 mb-2" id="roof-cleaning" v-if="services[0].visibility">
             <p class="h4 mb-10 text-center">Roof Cleaning</p>
             <div class="container">
               <div class="form-row">
@@ -118,10 +124,10 @@
                 </select>
               </div>
             </div>
-          </div>
+          </v-card>
           <!-- End Roof Cleaning Section -->
           <!-- Start House/Building Section -->
-          <div class="form-group" id="house-washing" v-if="services[3].visibility">
+          <v-card class="form-group p-3" id="house-washing" v-if="services[3].visibility">
             <p class="h4 mb-10 text-center">House/Building Wash</p>
             <div class="container">
               <div class="form-row">
@@ -157,10 +163,10 @@
                 </select>
               </div>
             </div>
-          </div>
+          </v-card>
           <!-- End House/Building Section -->
           <!-- Start Gutter Cleaning Section -->
-          <div class="form-group" id="gutter-cleaning" v-if="services[1].visibility">
+          <v-card class="form-group p-3" id="gutter-cleaning" v-if="services[1].visibility">
             <p class="h4 mb-10 text-center">Building Gutters Wash</p>
             <div class="container">
               <div class="form-row">
@@ -170,10 +176,10 @@
                   </div>
               </div>
             </div>
-          </div>
+          </v-card>
           <!-- End Gutter Cleaning Section -->
           <!-- Start Driveway/Flat Surfaces Section -->
-          <div class="form-group" id="drivewat-flat" v-if="services[4].visibility">
+          <v-card class="form-group p-3" id="drivewat-flat" v-if="services[4].visibility">
             <p class="h4 mb-10 text-center">Driveway/Flat Surfaces Cleaning</p>
             <div class="container">
               <div class="form-row">
@@ -195,7 +201,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          </v-card>
           <!-- End Gutter Cleaning Section -->
           <button class="btn btn-info btn-block my-4" type="submit">Submit</button>
         </form>
