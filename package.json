@@ -16,9 +16,9 @@
     "webpack": "^4.3.0"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.12.1",
+    "@vue/cli-plugin-babel": "^4.5.12",
     "@vue/cli-plugin-router": "^4.5.12",
-    "@vue/cli-service": "^3.5.0",
+    "@vue/cli-service": "^4.5.12",
     "deepmerge": "^4.2.2",
     "fibers": "^5.0.0"
   }
