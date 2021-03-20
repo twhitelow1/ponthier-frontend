@@ -67,6 +67,10 @@ footer {
 
 /** Classes **/
 
+.v-label{
+  top:5px;
+}
+
 .main-nav {
   top: 0px;
 }

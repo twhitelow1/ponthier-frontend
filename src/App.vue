@@ -1,4 +1,5 @@
 <template>
+<v-app>
   <div id="app">
     <div class="container-lg p-0 main-class">
       <!-- start topnav-->
@@ -45,6 +46,7 @@
       <!--End Footer-->
     </div>
   </div>
+</v-app>
 </template>
 
 <style>
