@@ -25,22 +25,6 @@
               id="email"
               required></v-text-field>
           </v-card>
-          <!-- Start Select Services Section-->
-          <v-card class="form-group p-5">
-            <v-container>
-              <v-row class="text-center">
-                <p class="h4 mb-8 text-center">Select Services</p>
-              </v-row>
-              <v-row style="height:100%;">
-                <v-col no-gutters justify-space-around cols="6" :key="service.id" v-for="service in services" class="form-check" > 
-                    <v-checkbox v-model="checkedServices" :id="service.title" @change="clickServiceCheckbox($event, service.id)" :value="service.id" class="align-self-center">
-                      <template v-slot:label class="pt-3 align-self-center"><H4>{{service.title}}</h4></template>
-                    </v-checkbox>
-                </v-col>
-              </v-row>
-            </v-container>
-          </v-card>
-          <!-- End Services Section -->
           <!-- Start Property Info Section -->
           <v-card class="form-group p-3 mb-4" id="property-info">
             <p class="h4 mb-10 text-center">Property Information</p>
@@ -76,6 +60,22 @@
             </v-container>
           </v-card>
           <!-- End Property Info Section -->
+          <!-- Start Select Services Section-->
+          <v-card class="form-group p-5">
+            <v-container>
+              <v-row class="text-center">
+                <p class="h4 mb-8 text-center">Select Services</p>
+              </v-row>
+              <v-row style="height:100%;">
+                <v-col no-gutters justify-space-around cols="6" :key="service.id" v-for="service in services" class="form-check justify-content-center align-middle" > 
+                    <v-checkbox v-model="checkedServices" :id="service.title" @change="clickServiceCheckbox($event, service.id)" :value="service.id" class="align-middle ">
+                      <template v-slot:label class="pt-3 align-middle"><H5 class="align-middle">{{service.title}}</h5></template>
+                    </v-checkbox>
+                </v-col>
+              </v-row>
+            </v-container>
+          </v-card>
+          <!-- End Services Section -->
           <!-- Start Roof Cleaning Section -->
           <v-card class="form-group p-3 mb-4" id="roof-cleaning" v-if="services[0].visibility">
             <p class="h4 mb-10 text-center">Roof Cleaning</p>
@@ -102,40 +102,33 @@
           <!-- Start House/Building Section -->
           <v-card class="form-group p-3 mb-4" id="house-washing" v-if="services[3].visibility">
             <p class="h4 mb-10 text-center">House/Building Wash</p>
-            <div class="container">
-              <div class="form-row">
-                <label for="exteriorType">Exterior Material?</label>
-                <select v-model="newExtType"  class="form-control" id="exteriorType">
-                  <option>Select Exterior Type</option>
-                  <option>Brick</option>
-                  <option>Drywal/EIFS</option>
-                  <option>Vinyl Sliding</option>
-                  <option>Stucco</option>
-                  <option>Wood</option>
-                  <option>Aluminum</option>
-                  <option>Hardie Board</option>
-                  <option>Other</option>
-                </select>
-              </div>
-              <div class="form-row">
-                <label for="doorType">Will the screens from the windows need to be removed and tracks cleaned?</label>
-                <v-radio-group v-model="newScreenRemoval">
-                  <v-radio color="blue" value="true">Yes</v-radio>
-                  <v-radio color="blue" value="false">No</v-radio>
+            <v-container>
+              <v-row>
+                <v-select 
+                    :items="exteriorMaterials" 
+                    v-model="newExtType" 
+                    id="exteriorType" 
+                    label="What Material are the exterior walls made of?">
+                </v-select>
+              </v-row>
+              <v-row>
+                <label for="screenRemoval">Will the screens from the windows need to be removed and tracks cleaned?</label>
+              </v-row>
+              <v-row>
+                <v-radio-group v-model="newScreenRemoval" id="screenRemoval" >
+                  <v-radio color="blue" value="true" label="Yes">Yes</v-radio>
+                  <v-radio color="blue" value="false" label="No">No</v-radio>
                 </v-radio-group>
-              </div>
-              <div class="form-row">
-                <label for="doorType">Type of Door</label>
-                <select v-model="newBuildingDoorType"  class="form-control" id="doorType">
-                  <option>Select Door Type</option>
-                  <option>Wood</option>
-                  <option>Fiberglass Gel Coated</option>
-                  <option>Glass</option>
-                  <option>Steel</option>
-                  <option>Other</option>
-                </select>
-              </div>
-            </div>
+              </v-row>
+              <v-row>
+                <v-select 
+                    :items="doorTypes" 
+                    v-model="newBuildingDoorType" 
+                    id="doorType" 
+                    label="What Material are the exterior doors made of?">
+                </v-select>
+              </v-row>
+            </v-container>
           </v-card>
           <!-- End House/Building Section -->
           <!-- Start Gutter Cleaning Section -->
@@ -175,7 +168,7 @@
               </div>
             </div>
           </v-card>
-          <!-- End Gutter Cleaning Section -->
+          <!-- End Driveway/Flat Surfaces Section -->
           <button class="btn btn-info btn-block my-4" type="submit">Submit</button>
         </v-form>
       </div>
@@ -245,6 +238,17 @@ export default {
       howManyFloors: ["1", "2", "3", "4"],
       roofMaterials: ["Asphalt Shingle", "Tile", "Metal Rust", "Cedar", "Other"],
       roofPitches: ["1/12", "2/12", "3/12", "4/12", "5/12", "6/12", "7/12", "8/12", "9/12", "10/12", "11/12", "12/12"],
+      exteriorMaterials: [
+        "Brick",
+        "Vinyl Siding",
+        "Drywall/EIFS",
+        "Stucco",
+        "Wood",
+        "Aluminum",
+        "Hardie Board",
+        "Other",
+      ],
+      doorTypes: ["Wood", "Fiberglass-Composite", "Steel", "Aluminum", "Other"],
     };
   },
   created: function () {},

@@ -116,6 +116,10 @@ footer {
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
 } */
 
+.v-label{
+  align-self: baseline;
+}
+
 .services-card {
   background-color: transparent;
   flex-wrap: wrap;
