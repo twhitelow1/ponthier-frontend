@@ -78,7 +78,7 @@
           <!-- End Services Section -->
           <!-- Start Roof Cleaning Section -->
           <v-card class="form-group p-3 mb-4" id="roof-cleaning" v-if="services[0].visibility">
-            <p class="h4 mb-10 text-center">Roof Cleaning</p>
+            <p class="h4 mb-10 text-center">Roof Cleaning</p><font-awesome-icon :icon="['fas', 'info-circle']" ></font-awesome-icon>
             <v-container>
               <v-row>
                 <v-select 

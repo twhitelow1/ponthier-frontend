@@ -95,7 +95,7 @@
           <!-- End Property Info Section -->
           <!-- Start Roof Cleaning Section -->
           <v-card class="form-group p-3 mb-2" id="roof-cleaning" v-if="services[0].visibility">
-            <p class="h4 mb-10 text-center">Roof Cleaning</p>
+            <p class="h4 mb-10 text-center">Roof Cleaning</p><i class="fas fa-info-circle"></i>
             <div class="container">
               <div class="form-row">
                 <label for="roofType">What Material Is The Roof Made Of?</label>
