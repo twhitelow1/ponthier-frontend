@@ -67,7 +67,7 @@
             <p class="h4 mb-8 text-center">Select Services</p>
             <v-container>
               <v-row style="height:100%;">
-                <v-col no-gutters justify-space-around cols="6" :key="service.id" v-for="service in services" class="form-check justify-content-center align-middle" > 
+                <v-col no-gutters lg="4" xs="12" :key="service.id" v-for="service in services" class="form-check justify-content-center align-middle" > 
                     <v-checkbox v-model="checkedServices" :id="service.title" @change="clickServiceCheckbox($event, service.id)" :value="service.id" class="align-middle ">
                       <template v-slot:label class="pt-3 align-middle"><H5 class="align-middle">{{service.title}}</h5></template>
                     </v-checkbox>
@@ -78,25 +78,62 @@
           <!-- End Services Section -->
           <!-- Start Roof Cleaning Section -->
           <v-card class="form-group p-3 mb-4" id="roof-cleaning" v-if="services[0].visibility">
-            <p class="h4 mb-10 text-center">Roof Cleaning</p><font-awesome-icon :icon="['fas', 'info-circle']" ></font-awesome-icon>
-            <v-container>
-              <v-row>
-                <v-select 
-                    :items="roofMaterials" 
-                    v-model="newRoofMaterial" 
-                    id="roofType" 
-                    label="What Material is the roof made of?">
-                </v-select>
-              </v-row>
-              <v-row>
-                <v-select 
-                    :items="roofPitches" 
-                    v-model="newPitchOfRoof" 
-                    id="roofPitch" 
-                    label="How's The Walkability/Pitch of the Roof?">
-                </v-select>
-              </v-row>
-            </v-container>
+            <p class="h4 mb-10 text-center">Roof Cleaning</p>
+              <v-container>
+                <v-row>
+                  <v-select 
+                      :items="roofMaterials" 
+                      v-model="newRoofMaterial" 
+                      id="roofType" 
+                      label="What Material is the roof made of?">
+                  </v-select>
+                </v-row>
+                <v-row>
+                  <v-col cols="11">
+                    <v-select 
+                        :items="roofPitches" 
+                        v-model="newPitchOfRoof" 
+                        id="roofPitch" 
+                        label="How's The Walkability/Pitch of the Roof?">
+                    </v-select>
+                  </v-col>
+                  <v-col class="align-baseline" cols="1">
+                    <v-dialog
+                      v-model="dialog"
+                      width="500"
+                    >
+                    <template v-slot:activator="{on, attrs}">
+                      <font-awesome-icon v-bind="attrs" v-on="on" :icon="['fas', 'info-circle']" alt="More Information"></font-awesome-icon>
+                    </template>
+
+                   <!--- Dialog --->
+                    <v-card>
+                      <v-card-title class="headline grey lighten-2">
+                        Roof Pitches Diagram
+                      </v-card-title>
+
+                      <v-img 
+                        src="/roof-pitch-diagram.png"
+                      >
+                      </v-img>
+
+                      <v-divider></v-divider>
+
+                      <v-card-actions>
+                        <v-spacer></v-spacer>
+                        <v-btn
+                          color="primary"
+                          text
+                          @click="dialog = false"
+                        >
+                          Close
+                        </v-btn>
+                      </v-card-actions>
+                    </v-card>
+                  </v-dialog>
+                  </v-col>
+                </v-row>
+              </v-container>
           </v-card>
           <!-- End Roof Cleaning Section -->
           <!-- Start House/Building Section -->
@@ -178,6 +215,7 @@ export default {
   data: function () {
     return {
       valid: true,
+      dialog: false,
       //Form Validation
       nameRules: [
         (v) => !!v || "Name is required",
