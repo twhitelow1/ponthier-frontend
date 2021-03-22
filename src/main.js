@@ -9,18 +9,18 @@ import { library, dom } from '@fortawesome/fontawesome-svg-core';
 import { faUserSecret } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
-//Import Vue Telephone Input
-import VueTelInputVuetify from 'vue-tel-input-vuetify/lib';
-Vue.use(VueTelInputVuetify, {
-  vuetify,
-});
-
 axios.defaults.baseURL = process.env.NODE_ENV === "development" ? "http://localhost:3000" : "/";
 
 // Set up FontAwesome
 library.add(faUserSecret);
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 dom.watch();
+
+//VuePhoneNumberInput
+import VuePhoneNumberInput from 'vue-phone-number-input';
+import 'vue-phone-number-input/dist/vue-phone-number-input.css';
+
+Vue.component('vue-phone-number-input', VuePhoneNumberInput);
 
 Vue.config.productionTip = false;
 

@@ -17,13 +17,13 @@
               <validation-provider
                 v-slot="{ errors }"
                 name="Name"
-                rules="required|max:50|min:3"
+                rules="required|max:10"
               >
                 <v-text-field
                   v-model="newClientName"
                   label="Full Name"
                   id="name"
-                  :counter="50"
+                  :counter="10"
                   :error-messages="errors"
                   required>
                 </v-text-field>
@@ -37,13 +37,24 @@
                   required>
                 </v-text-field>
               </validation-provider>
-                <vue-tel-input-vuetify 
+              <validation-provider
+                v-slot="{ errors }"
+                name="phoneNumber"
+                :rules="{
+                  required: true,
+                  digits: 7,
+                  regex: '^(71|72|74|76|81|82|84|85|86|87|88|89)\\d{5}$'
+                }"
+              >
+                <v-text-field
                   v-model="newPhone"
                   label="Phone Number"
                   id="email"
-                  :onlyCountries="['us']"
+                  :counter="7"
+                  :error-messages="errors"
                   required>
-                </vue-tel-input-vuetify>
+                </v-text-field>
+              </validation-provider>
             </v-card>
             <!-- Start Property Info Section -->
             <v-card class="form-group p-3 mb-4" id="property-info">
