@@ -2,10 +2,12 @@
   <!-- Start Quote Section-->
     <div class="container-fluid py-3 section justify-content-center" id="about">
       <div class="row justify-content-center">
-        <h2 class="text-center py-4 display-2">Fill out the details below to get your instant quote</h2>
+        <h2 class="text-center p-4 display-2">
+          Fill out the form below to get your <b>FREE</b> quote
+        </h2>
       </div>
       <div class="row justify-content-center about">
-        <v-form class="p-2 quote justify-content-center" v-on:submit.prevent="createQuote()">
+        <v-form ref="form" v-model="valid" lazy-validation class="p-2 quote justify-content-center" v-on:submit.prevent="createQuote()">
           <v-card class="form-group p-3 ">
             <p class="h4 mb-10 text-center">Your Details</p>
             <v-text-field
@@ -110,10 +112,7 @@
                 </v-select>
               </v-row>
               <v-row>
-                <label for="screenRemoval">Will the screens from the windows need to be removed and tracks cleaned?</label>
-              </v-row>
-              <v-row>
-                <v-radio-group v-model="newScreenRemoval" id="screenRemoval" >
+                <v-radio-group v-model="newScreenRemoval" id="screenRemoval" label="Will the screens from the windows need to be removed and tracks cleaned?">
                   <v-radio color="blue" value="true" label="Yes">Yes</v-radio>
                   <v-radio color="blue" value="false" label="No">No</v-radio>
                 </v-radio-group>
@@ -145,7 +144,7 @@
           </v-card>
           <!-- End Gutter Cleaning Section -->
           <!-- Start Driveway/Flat Surfaces Section -->
-          <v-card class="form-group p-3" id="drivewat-flat" v-if="services[4].visibility">
+          <v-card class="form-group p-3" id="driveway-flat" v-if="services[4].visibility">
             <p class="h4 mb-10 text-center">Driveway/Flat Surfaces Cleaning</p>
             <v-container>
               <v-row>
@@ -178,6 +177,13 @@ import axios from "axios";
 export default {
   data: function () {
     return {
+      valid: true,
+      //Form Validation
+      nameRules: [
+        (v) => !!v || "Name is required",
+        (v) => (v && v.length <= 10) || "Name must be less than 10 characters",
+      ],
+      emailRules: [(v) => !!v || "E-mail is required", (v) => /.+@.+\..+/.test(v) || "E-mail must be valid"],
       //form values
       newClientName: "",
       newEmail: "",
@@ -294,3 +300,24 @@ export default {
   },
 };
 </script>
+
+<style>
+.form-group p,
+.form-group label {
+  color: #2a5478;
+}
+.form-group {
+  background-color: whitesmoke !important;
+}
+.v-input__slot {
+  align-items: baseline !important;
+}
+.v-input__slot H5 {
+  color: #2a5478;
+}
+.btn-info {
+  color: white !important;
+  background-color: #2a5478;
+  border-color: #2a5478;
+}
+</style>
