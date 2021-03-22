@@ -6,7 +6,7 @@
       </div>
       <div class="row justify-content-center about">
         <v-form class="p-2 quote justify-content-center" v-on:submit.prevent="createQuote()">
-          <v-card class="form-group p-3">
+          <v-card class="form-group p-3 ">
             <p class="h4 mb-10 text-center">Your Details</p>
             <v-text-field
               v-model="newClientName"
@@ -62,10 +62,8 @@
           <!-- End Property Info Section -->
           <!-- Start Select Services Section-->
           <v-card class="form-group p-5">
+            <p class="h4 mb-8 text-center">Select Services</p>
             <v-container>
-              <v-row class="text-center">
-                <p class="h4 mb-8 text-center">Select Services</p>
-              </v-row>
               <v-row style="height:100%;">
                 <v-col no-gutters justify-space-around cols="6" :key="service.id" v-for="service in services" class="form-check justify-content-center align-middle" > 
                     <v-checkbox v-model="checkedServices" :id="service.title" @change="clickServiceCheckbox($event, service.id)" :value="service.id" class="align-middle ">
@@ -134,39 +132,39 @@
           <!-- Start Gutter Cleaning Section -->
           <v-card class="form-group p-3 mb-4" id="gutter-cleaning" v-if="services[1].visibility">
             <p class="h4 mb-10 text-center">Building Gutters Wash</p>
-            <div class="container">
-              <div class="form-row">
-                <div class="form-row form-group my-2m">
-                    <label for="sqft" class="col-ms-2 col-form-label">Total Sqft of gutters?</label>
-                      <input v-model="newGuttersSqft" type="text" id="gutterSqft" placeholder="sqft" class="form-control mb-4 ">
-                  </div>
-              </div>
-            </div>
+            <v-container>
+              <v-row>
+                <v-text-field
+                  v-model="newGutterSqft"
+                  label="Total Sqft of gutters?"
+                  id="gutterSqft"
+                  required>
+                </v-text-field>
+              </v-row>
+            </v-container>
           </v-card>
           <!-- End Gutter Cleaning Section -->
           <!-- Start Driveway/Flat Surfaces Section -->
           <v-card class="form-group p-3" id="drivewat-flat" v-if="services[4].visibility">
             <p class="h4 mb-10 text-center">Driveway/Flat Surfaces Cleaning</p>
-            <div class="container">
-              <div class="form-row">
-                <div class="form-row form-group my-2m">
-                    <label for="sqft" class="col-ms-2 col-form-label">Total Sqft of Driveway/Flat Surfaces?</label>
-                      <input v-model="newFltSurfaceSqft" type="text" id="flatSurfaceSqft" placeholder="sqft" class="form-control mb-4 ">
-                  </div>
-              </div>
-              <div class="form-row">
-                <div class="form-row form-group my-2m">
-                  <label for="buildingStories">What size drive way?</label>
-                  <select v-model="newDrivewaySize"  class="form-control" id="drivewaySize">
-                    <option>Select</option>
-                    <option>1 car</option>
-                    <option>2 car</option>
-                    <option>3 car</option>
-                    <option>4 car</option>
-                  </select>
-                </div>
-              </div>
-            </div>
+            <v-container>
+              <v-row>
+                <v-text-field
+                  v-model="newFltSurfaceSqft"
+                  label="Total Sqft of Driveway/Flat Surfaces?"
+                  id="flatSurfaceSqft"
+                  required>
+                </v-text-field>
+              </v-row>
+              <v-row>
+                <v-select 
+                    :items="drivewaySizes" 
+                    v-model="newDrivewaySize" 
+                    id="drivewaySize" 
+                    label="What Size Driveway?">
+                </v-select>
+              </v-row>
+            </v-container>
           </v-card>
           <!-- End Driveway/Flat Surfaces Section -->
           <button class="btn btn-info btn-block my-4" type="submit">Submit</button>
@@ -249,6 +247,7 @@ export default {
         "Other",
       ],
       doorTypes: ["Wood", "Fiberglass-Composite", "Steel", "Aluminum", "Other"],
+      drivewaySizes: ["1 Car", "2 Car", "3 Car", "4 Car"],
     };
   },
   created: function () {},
