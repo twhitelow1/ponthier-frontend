@@ -9,6 +9,12 @@ import { library, dom } from '@fortawesome/fontawesome-svg-core';
 import { faUserSecret } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
+//Import Vue Telephone Input
+import VueTelInputVuetify from 'vue-tel-input-vuetify/lib';
+Vue.use(VueTelInputVuetify, {
+  vuetify,
+});
+
 axios.defaults.baseURL = process.env.NODE_ENV === "development" ? "http://localhost:3000" : "/";
 
 // Set up FontAwesome

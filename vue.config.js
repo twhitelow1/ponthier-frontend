@@ -1,6 +1,7 @@
 module.exports = {
   transpileDependencies: [
-    'vuetify'
+    'vuetify',
+    "vue-tel-input-vuetify"
   ],
   css: {
     loaderOptions: {
@@ -9,4 +10,4 @@ module.exports = {
       }
     }
   }
-}
+};
