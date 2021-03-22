@@ -6,7 +6,7 @@
       <nav class="navbar navbar-dark bg-primary text-white px-2 py-0 d-none d-md-flex mx-auto">
         <p><a class="text-white" href="tel:+13526825921">(352) 682 - 5921</a> | <a
             href="mailto:contact@ponthierandson.com" style="color:white;">contact@ponthierandson.com</a></p>
-        <p><a class="text-white" href="/quote-new">Get A Free Quote Today!</a></p>
+        <p><a class="text-white" href="/quotes-new1">Get A Free Quote Today!</a></p>
       </nav>
       <!--Start Main Nav-->
       <nav class="navbar navbar-expand-lg navbar-light p-0 sticky-top">

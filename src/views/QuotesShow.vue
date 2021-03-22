@@ -6,16 +6,239 @@
       </div>
       <div class="column justify-content-center about quote">
     <h4 class="text-center"><router-link to="/acp">Back To Admin Panel</router-link></h4>
-    <img v-bind:src="quote.url" v-bind:alt="quote.name" />
-    <table>
-      <tr>
-        <td>Client Name</td>
-        <td>{{ quote.client_name }}</td>
-      </tr>
-    </table>
-    <p>Client Name: {{ quote.client_name }}</p>
-    <p>Phone: {{ quote.phone }}</p>
-    <p>Email: {{ quote.email }}</p>
+    <v-card class="form-group p-2 justify-content-center">
+      <v-container>
+        <v-row>
+          <v-col >
+            <p class="h4 mb-10 text-center">Customer Details</p>
+          </v-col>
+        </v-row>
+        <v-row>
+          <v-col  >
+            Client Name:
+          </v-col>
+          <v-col >
+            {{quote.client_name}}
+          </v-col>
+        </v-row>
+        <v-row>
+          
+          <v-col  class="text-left">
+            Phone Number:
+          </v-col>
+          <v-col  class="text-left">
+            {{quote.phone}}
+          </v-col>
+        </v-row>
+        <v-row>
+          <v-col >
+            Email:
+          </v-col>
+          <v-col class="text-left">
+            {{quote.email}}
+          </v-col>
+        </v-row>
+      </v-container>     
+    </v-card>
+    <v-card class="form-group p-2 justify-content-center">
+      <v-container>
+        <v-row>
+          <v-col >
+            <p class="h4 mb-10 text-center">Property Information</p>
+          </v-col>
+        </v-row>
+        <v-row>
+          <v-col  >
+            Project Type:
+          </v-col>
+          <v-col >
+            {{quote.project_type}}
+          </v-col>
+        </v-row>
+        <v-row>
+          <v-col  class="text-left">
+            Floors:
+          </v-col>
+          <v-col  class="text-left">
+            {{quote.floors}}
+          </v-col>
+        </v-row>
+        <v-row>
+          <v-col >
+            Building Sqft:
+          </v-col>
+          <v-col class="text-left">
+            {{quote.building_sqft}} Sqft
+          </v-col>
+        </v-row>
+      </v-container>     
+    </v-card>
+    <v-card class="form-group p-2 justify-content-center">
+      <v-container>
+        <v-row>
+          <v-col >
+            <p class="h4 mb-10 text-center">Services</p>
+          </v-col>
+        </v-row>
+        <v-row>
+          <v-col  >
+            Client Name:
+          </v-col>
+          <v-col >
+            {{quote.client_name}}
+          </v-col>
+        </v-row>
+        <v-row>
+          <v-col  class="text-left">
+            Phone Number:
+          </v-col>
+          <v-col  class="text-left">
+            {{quote.phone}}
+          </v-col>
+        </v-row>
+        <v-row>
+          <v-col >
+            Email:
+          </v-col>
+          <v-col class="text-left">
+            {{quote.email}}
+          </v-col>
+        </v-row>
+      </v-container>     
+    </v-card>
+    <v-card class="form-group p-2 justify-content-center">
+      <v-container>
+        <v-row>
+          <v-col >
+            <p class="h4 mb-10 text-center">Building Wash</p>
+          </v-col>
+        </v-row>
+        <v-row>
+          <v-col  >
+            Client Name:
+          </v-col>
+          <v-col >
+            {{quote.client_name}}
+          </v-col>
+        </v-row>
+        <v-row>
+          <v-col  class="text-left">
+            Phone Number:
+          </v-col>
+          <v-col  class="text-left">
+            {{quote.phone}}
+          </v-col>
+        </v-row>
+        <v-row>
+          <v-col >
+            Email:
+          </v-col>
+          <v-col class="text-left">
+            {{quote.email}}
+          </v-col>
+        </v-row>
+      </v-container>     
+    </v-card>
+    <v-card class="form-group p-2 justify-content-center">
+      <v-container>
+        <v-row>
+          <v-col >
+            <p class="h4 mb-10 text-center">Roof Cleaning</p>
+          </v-col>
+        </v-row>
+        <v-row>
+          <v-col  >
+            Client Name:
+          </v-col>
+          <v-col >
+            {{quote.client_name}}
+          </v-col>
+        </v-row>
+        <v-row>
+          <v-col  class="text-left">
+            Phone Number:
+          </v-col>
+          <v-col  class="text-left">
+            {{quote.phone}}
+          </v-col>
+        </v-row>
+        <v-row>
+          <v-col >
+            Email:
+          </v-col>
+          <v-col class="text-left">
+            {{quote.email}}
+          </v-col>
+        </v-row>
+      </v-container>     
+    </v-card>
+    <v-card class="form-group p-2 justify-content-center">
+      <v-container>
+        <v-row>
+          <v-col >
+            <p class="h4 mb-10 text-center">Gutter Cleaning</p>
+          </v-col>
+        </v-row>
+        <v-row>
+          <v-col  >
+            Client Name:
+          </v-col>
+          <v-col >
+            {{quote.client_name}}
+          </v-col>
+        </v-row>
+        <v-row>
+          <v-col  class="text-left">
+            Phone Number:
+          </v-col>
+          <v-col  class="text-left">
+            {{quote.phone}}
+          </v-col>
+        </v-row>
+        <v-row>
+          <v-col >
+            Email:
+          </v-col>
+          <v-col class="text-left">
+            {{quote.email}}
+          </v-col>
+        </v-row>
+      </v-container>     
+    </v-card>
+    <v-card class="form-group p-2 justify-content-center">
+      <v-container>
+        <v-row>
+          <v-col >
+            <p class="h4 mb-10 text-center">Driveway/Flat Surfaces</p>
+          </v-col>
+        </v-row>
+        <v-row>
+          <v-col  >
+            Client Name:
+          </v-col>
+          <v-col >
+            {{quote.client_name}}
+          </v-col>
+        </v-row>
+        <v-row>
+          <v-col  class="text-left">
+            Phone Number:
+          </v-col>
+          <v-col  class="text-left">
+            {{quote.phone}}
+          </v-col>
+        </v-row>
+        <v-row>
+          <v-col >
+            Email:
+          </v-col>
+          <v-col class="text-left">
+            {{quote.email}}
+          </v-col>
+        </v-row>
+      </v-container>     
+    </v-card>
+    
     <p>Project Type: {{ quote.project_type }}</p>
     <p>Floors: {{ quote.floors }}</p>
     <p>Building_Sqft: {{ quote.building_sqft }}</p>

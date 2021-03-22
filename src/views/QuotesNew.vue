@@ -47,6 +47,7 @@
                 }"
               >
                 <v-text-field
+                  type="tel"
                   v-model="newPhone"
                   label="Phone Number"
                   id="email"
