@@ -3,7 +3,7 @@
     <div class="container-fluid py-3 section justify-content-center" id="about">
       <div class="row justify-content-center">
         <h2 class="text-center p-4 display-2">
-          Fill out the form below to get your <b>FREE</b> quote
+          Fill out the form below to get your <b class="text-success">FREE</b> quote
         </h2>
       </div>
       <div class="row justify-content-center about">
@@ -67,7 +67,7 @@
             <p class="h4 mb-8 text-center">Select Services</p>
             <v-container>
               <v-row style="height:100%;">
-                <v-col no-gutters lg="4" xs="12" :key="service.id" v-for="service in services" class="form-check justify-content-center align-middle" > 
+                <v-col lg="4" sm="6" xs="12" :key="service.id" v-for="service in services" class="form-check justify-content-center align-middle" > 
                     <v-checkbox v-model="checkedServices" :id="service.title" @change="clickServiceCheckbox($event, service.id)" :value="service.id" class="align-middle ">
                       <template v-slot:label class="pt-3 align-middle"><H5 class="align-middle">{{service.title}}</h5></template>
                     </v-checkbox>
