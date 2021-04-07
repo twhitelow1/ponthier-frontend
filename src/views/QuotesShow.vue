@@ -133,8 +133,11 @@
           <v-col class="text-center text-capitalize" >
             Screen Removal :
           </v-col> 
-          <v-col class="text-center text-capitalize" >
-            {{quote.building_wash.screen_removal}}
+          <v-col class="text-center text-capitalize" v-if="quote.building_wash.screen_removal" >
+            Yes
+          </v-col>
+          <v-col class="text-center text-capitalize" v-if="!quote.building_wash.screen_removal" >
+            No
           </v-col>
         </v-row>
         <v-row >
