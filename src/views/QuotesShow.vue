@@ -1,11 +1,36 @@
 <template>
   <div class="quotes-show">
-    <div class="container-fluid py-3 section" id="about">
+    <div class="container-fluid py-10 section" id="about">
       <div class="row justify-content-center">
         <h1>{{ quote.customer_info.client_name }}'s Quote</h1>
       </div>
-      <div class="column justify-content-center about quote">
-    <h4 class="text-center"><router-link to="/acp">Back To Admin Panel</router-link></h4>
+      <div class="column justify-content-center about quote py-5">
+    <h4 class="text-center"><router-link to="/quotes">Back To All Quotes</router-link></h4>
+    <!--- Quote Details --->
+    <v-card class="form-group py-3  pjustify-content-center">
+      <v-container>
+        <v-row>
+          <v-col >
+            <p class="h4 mb-10 text-center">Quote Details</p>
+          </v-col>
+        </v-row>
+        <v-row>
+          <v-col class="text-center"  >
+            Quote Status:
+          </v-col>
+          <v-col class="text-center" >
+            {{quote.status}}
+          </v-col>
+          <v-col class="text-center"  >
+            Quoted Price:
+          </v-col>
+          <v-col class="text-center" >
+            {{quote.price}}
+          </v-col>
+        </v-row>
+      </v-container>     
+    </v-card>
+    <!--- / Quote Details --->
     <!--- Customer Details --->
     <v-card class="form-group py-3  pjustify-content-center">
       <v-container>
@@ -54,7 +79,7 @@
           <v-col  class="text-center" >
             Project Type:
           </v-col>
-          <v-col class="text-center" >
+          <v-col class="text-center text-capitalize" >
             {{quote.property_info.project_type}}
           </v-col>
         </v-row>
@@ -62,7 +87,7 @@
           <v-col class="text-center" >
             Floors:
           </v-col>
-          <v-col class="text-center" >
+          <v-col class="text-center text-capitalize" >
             {{quote.property_info.floors}}
           </v-col>
         </v-row>
@@ -78,8 +103,11 @@
           <v-col class="text-center" >
             Has Garage?:
           </v-col>
-          <v-col class="text-center" >
-            {{quote.property_info.garage}} 
+          <v-col class="text-center" v-if="quote.property_info.garage">
+            Yes
+          </v-col>
+          <v-col class="text-center" v-if="!quote.property_info.garage">
+            No
           </v-col>
         </v-row>
       </v-container>     
@@ -184,7 +212,7 @@
         </v-row>
         <v-row>
           <v-col  class="text-center" >
-            It is a Driveway:
+            Is a Driveway?:
           </v-col>
           <v-col  class="text-center" >
             {{quote.flat_surfaces.driveway}}
@@ -193,6 +221,14 @@
         <v-row v-if="quote.flat_surfaces.driveway">
           <v-col class="text-center" >
             Driveway Size:
+          </v-col>
+          <v-col class="text-center" >
+            {{quote.flat_surfaces.driveway_size}}
+          </v-col>
+        </v-row>
+        <v-row v-if="!quote.flat_surfaces.driveway">
+          <v-col class="text-center" >
+            Flat Surface Type:
           </v-col>
           <v-col class="text-center" >
             {{quote.flat_surfaces.driveway_size}}
