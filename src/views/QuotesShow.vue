@@ -217,8 +217,11 @@
           <v-col  class="text-center text-capitalize" >
             Is a Driveway?:
           </v-col>
-          <v-col  class="text-center text-capitalize" >
-            {{quote.flat_surfaces.driveway}}
+          <v-col  class="text-center text-capitalize" v-if="quote.flat_surfaces.driveway">
+            Yes
+          </v-col>
+          <v-col  class="text-center text-capitalize" v-if="!quote.flat_surfaces.driveway">
+            No
           </v-col>
         </v-row>
         <v-row v-if="quote.flat_surfaces.driveway">
