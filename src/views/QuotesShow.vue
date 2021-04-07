@@ -122,26 +122,26 @@
           </v-col>
         </v-row>
         <v-row >
-          <v-col class="text-center" >
+          <v-col class="text-center text-capitalize" >
             Exterior Wall Material:
           </v-col>
-          <v-col class="text-center" >
+          <v-col class="text-center text-capitalize" >
             {{quote.building_wash.ext_material}}
           </v-col>
         </v-row>
         <v-row >
-          <v-col class="text-center" >
+          <v-col class="text-center text-capitalize" >
             Screen Removal :
-          </v-col>
-          <v-col class="text-center" >
+          </v-col> 
+          <v-col class="text-center text-capitalize" >
             {{quote.building_wash.screen_removal}}
           </v-col>
         </v-row>
         <v-row >
-          <v-col class="text-center" >
+          <v-col class="text-center text-capitalize" >
             Door Material:
           </v-col>
-          <v-col class="text-center" >
+          <v-col class="text-center text-capitalize" >
             {{quote.building_wash.door_material}}
           </v-col>
         </v-row>
