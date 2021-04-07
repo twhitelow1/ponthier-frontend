@@ -22,7 +22,7 @@
                 <v-text-field
                   v-model="newClientName"
                   label="Full Name"
-                  id="name"
+                  id="clientName"
                   :counter="10"
                   :error-messages="errors"
                   required>
@@ -50,7 +50,7 @@
                   type="tel"
                   v-model="newPhone"
                   label="Phone Number"
-                  id="email"
+                  id="phone"
                   :counter="7"
                   :error-messages="errors"
                   required>
@@ -87,6 +87,14 @@
                       v-model="newBuildingSqft"
                       label="Building Sqft">
                     </v-text-field>
+                  </v-col>
+                </v-row>
+                <v-row>
+                  <v-col>
+                    <v-radio-group v-model="newGarage" id="garage" label="Is there an attached garage?">
+                      <v-radio color="blue" value="true" label="Yes">Yes</v-radio>
+                      <v-radio color="blue" value="false" label="No">No</v-radio>
+                    </v-radio-group>
                   </v-col>
                 </v-row>
               </v-container>
@@ -294,23 +302,22 @@ export default {
       newProjectType: "",
       newFloors: "",
       newBuildingSqft: "",
+      newGarage: "",
       newRoofMaterial: "",
       newPitchOfRoof: "",
-      newGarage: "",
-      newExtType: "",
-      newFltSurfaceSqft: "",
-      newEnclosureHeight: "",
-      newPoolDeckType: "",
-      newGutterGuardRemove: "",
-      newBuildingDoorType: "",
-      newGutterGuardRinse: "",
-      newRoofServices: "",
-      newGutterCleaning: "",
       newGutterSqft: "",
-      newPoolEnclosures: "",
-      newHouseWash: "",
+      newExtMaterial: "",
+      newScreenRemoval: "",
+      newDoorMaterial: "",
+      newFltSurfaceSqft: "",
       newDriveway: "",
-      newRustRemoval: "",
+      newDrivewaySize: "",
+      newComments: "",
+      newBuildingWash: false,
+      newRustRemoval: false,
+      newRoofServices: false,
+      newGutterCleaning: false,
+      newFlatSurfaces: false,
       checkedServices: [],
       // Types of services
       services: [
@@ -331,12 +338,12 @@ export default {
         },
         {
           id: 4,
-          title: "House/Building Wash",
+          title: "Building (House) Wash",
           visibility: false,
         },
         {
           id: 5,
-          title: "Driveway/Flat Surfaces",
+          title: "Flat Surfaces (Driveway)",
           visibility: false,
         },
       ],
@@ -363,6 +370,23 @@ export default {
   methods: {
     clickServiceCheckbox: function (e, id) {
       this.services[id - 1].visibility = !this.services[id - 1].visibility;
+      switch (this.services[id - 1].title) {
+        case "Building (House) Wash":
+          this.newBuildingWash = !this.newBuildingWash;
+          break;
+        case "Gutter Cleaning":
+          this.newGutterCleaning = !this.newGutterCleaning;
+          break;
+        case "Roof Services":
+          this.newRoofServices = !this.newRoofServices;
+          break;
+        case "Flat Surfaces (Driveway)":
+          this.newFlatSurfaces = !this.newFlatSurfaces;
+          break;
+        case "Rust Removal":
+          this.newRustRemoval = !this.newRustRemoval;
+          break;
+      }
       console.log(`services: ${this.services}`);
     },
     createQuote: function () {
