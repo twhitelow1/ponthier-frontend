@@ -181,22 +181,22 @@
                 <v-row>
                   <v-select 
                       :items="exteriorMaterials" 
-                      v-model="newExtType" 
-                      id="exteriorType" 
+                      v-model="newExtMaterial" 
+                      id="extMaterial" 
                       label="What Material are the exterior walls made of?">
                   </v-select>
                 </v-row>
                 <v-row>
                   <v-radio-group v-model="newScreenRemoval" id="screenRemoval" label="Will the screens from the windows need to be removed and tracks cleaned?">
-                    <v-radio color="blue" value="true" label="Yes">Yes</v-radio>
-                    <v-radio color="blue" value="false" label="No">No</v-radio>
+                    <v-radio color="blue" :value="true" label="Yes">Yes</v-radio>
+                    <v-radio color="blue" :value="false" label="No">No</v-radio>
                   </v-radio-group>
                 </v-row>
                 <v-row>
                   <v-select 
                       :items="doorTypes" 
-                      v-model="newBuildingDoorType" 
-                      id="doorType" 
+                      v-model="newDoorMaterial" 
+                      id="doorMaterial" 
                       label="What Material are the exterior doors made of?">
                   </v-select>
                 </v-row>
@@ -231,12 +231,44 @@
                   </v-text-field>
                 </v-row>
                 <v-row>
+                   <v-radio-group v-model="newDriveway" id="driveway" label="Is this a driveway?">
+                    <v-radio color="blue" :value="true" label="Yes">Yes</v-radio>
+                    <v-radio color="blue" :value="false" label="No">No</v-radio>
+                  </v-radio-group>
+                </v-row>
+                <v-row>
                   <v-select 
                       :items="drivewaySizes" 
                       v-model="newDrivewaySize" 
                       id="drivewaySize" 
-                      label="What Size Driveway?">
+                      label="If this is a driveway then how many cars can fit in it?"
+                      >
                   </v-select>
+                </v-row>
+                <v-row >
+                  <v-text-field 
+                      v-model="newDrivewaySize" 
+                      id="drivewaySize" 
+                      label="Flat Surface Type (Not Driveway)?"
+                      >
+                  </v-text-field>
+                </v-row>
+              </v-container>
+            </v-card>
+            <!-- End Driveway/Flat Surfaces Section -->
+            <!-- Start Comments Section -->
+            <v-card class="form-group p-3" id="comments">
+              <p class="h4 mb-10 text-center">Comments</p>
+              <v-container>
+                <v-row>
+                  <v-textarea
+                    v-model="newComments"
+                    hint="Got more details to share?"
+                    id="comments"
+                    name="comments"
+                    label="Please let us know any other information that you would like to share"
+                    required>
+                  </v-textarea>
                 </v-row>
               </v-container>
             </v-card>
@@ -307,10 +339,10 @@ export default {
       newPitchOfRoof: "",
       newGutterSqft: "",
       newExtMaterial: "",
-      newScreenRemoval: "",
+      newScreenRemoval: false,
       newDoorMaterial: "",
       newFltSurfaceSqft: "",
-      newDriveway: "",
+      newDriveway: false,
       newDrivewaySize: "",
       newComments: "",
       newBuildingWash: false,
@@ -395,24 +427,27 @@ export default {
         clientName: this.newClientName,
         email: this.newEmail,
         phone: this.newPhone,
+        status: "submitted",
+        price: 0.0,
         projectType: this.newProjectType,
         floors: this.newFloors,
         buildingSqft: this.newBuildingSqft,
+        garage: this.newGarage,
+        roofServices: this.roofServices,
         roofMaterial: this.newRoofMaterial,
         pitchOfRoof: this.newPitchOfRoof,
-        garage: this.newGarage,
-        extType: this.newExtType,
+        gutterCleaning: this.gutterCleaning,
+        gutterSqft: this.gutterSqft,
+        buildingWash: this.buildingWash,
+        extMaterial: this.newExtMaterial,
+        screenRemoval: this.screenRemoval,
+        doorMaterial: this.newDoorMaterial,
+        flatSurfaces: this.newFlatSurfaces,
         fltSurfaceSqft: this.newFltSurfaceSqft,
-        enclosureHeight: this.newEnclosureHeight,
-        poolDeckType: this.newPoolDeckType,
-        gutterGuardRemove: this.newGutterGuardRemove,
-        gutterGuardRinse: this.newGutterGuardRinse,
-        roofServices: this.newRoofServices,
-        gutterCleaning: this.newGutterCleaning,
-        houseWash: this.newHouseWash,
-        poolEnclosures: this.newPoolEnclosures,
         driveway: this.newDriveway,
+        drivewaySize: this.newDrivewaySize,
         rustRemoval: this.newRustRemoval,
+        comments: this.newComments,
       };
       axios
         .post("/api/quotes", params)
