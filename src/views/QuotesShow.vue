@@ -157,18 +157,18 @@
           </v-col>
         </v-row>
         <v-row>
-          <v-col class="text-center"  >
+          <v-col class="text-center text-capitalize"  >
             Roof Material:
           </v-col>
-          <v-col class="text-center" >
+          <v-col class="text-center text-capitalize" >
             {{quote.roof_services.roof_material}}
           </v-col>
         </v-row>
         <v-row>
-          <v-col class="text-center"  >
+          <v-col class="text-center text-capitalize"  >
             Roof Pitch:
           </v-col>
-          <v-col class="text-center"  >
+          <v-col class="text-center text-capitalize"  >
             {{quote.roof_services.pitch_of_roof}}
           </v-col>
         </v-row>
@@ -203,34 +203,34 @@
           </v-col>
         </v-row>
         <v-row>
-          <v-col class="text-center" >
+          <v-col class="text-center text-capitalize" >
             Flat Surface Sqft:
           </v-col>
-          <v-col class="text-center" >
+          <v-col class="text-center text-capitalize" >
             {{quote.flat_surfaces.flt_surface_sqft}}
           </v-col>
         </v-row>
         <v-row>
-          <v-col  class="text-center" >
+          <v-col  class="text-center text-capitalize" >
             Is a Driveway?:
           </v-col>
-          <v-col  class="text-center" >
+          <v-col  class="text-center text-capitalize" >
             {{quote.flat_surfaces.driveway}}
           </v-col>
         </v-row>
         <v-row v-if="quote.flat_surfaces.driveway">
-          <v-col class="text-center" >
+          <v-col class="text-center text-capitalize" >
             Driveway Size:
           </v-col>
-          <v-col class="text-center" >
+          <v-col class="text-center text-capitalize" >
             {{quote.flat_surfaces.driveway_size}}
           </v-col>
         </v-row>
         <v-row v-if="!quote.flat_surfaces.driveway">
-          <v-col class="text-center" >
+          <v-col class="text-center text-capitalize" >
             Flat Surface Type:
           </v-col>
-          <v-col class="text-center" >
+          <v-col class="text-center text-capitalize" >
             {{quote.flat_surfaces.driveway_size}}
           </v-col>
         </v-row>
