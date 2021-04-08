@@ -6,6 +6,7 @@ import Admin from '../views/Admin.vue';
 import QuotesIndex from '../views/QuotesIndex.vue';
 import QuoteShow from '../views/QuotesShow.vue'
 import QuotesNew from '../views/QuotesNew.vue';
+import QuotesSuccess from '../views/QuotesSuccess.vue';
 
 Vue.use(VueRouter);
 
@@ -24,6 +25,11 @@ const routes = [
     path: '/quote-new',
     name: 'quote-new',
     component: QuotesCreate,
+  },
+  {
+    path: '/quote-success',
+    name: 'quote-success',
+    component: QuotesSuccess,
   },
   {
     path: '/quotes/:id',

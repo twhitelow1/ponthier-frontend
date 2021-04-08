@@ -38,12 +38,12 @@
       </nav>
       <router-view/>
       <!--Start Footer-->
-      <footer class="d-flex flex-column align-items-center p-2">
+      <footer class="d-flex flex-column align-items-center p-2 footer">
         Copyright 2020 Ponthier & Son.
         Website Developed by <a href="https://todd.whitelow.tech">Todd Whitelow Jr.</a>
         <a href="/acp">Control Panel</a><br />
       </footer>
-      <!--End Footer-->
+    <!--End Footer-->
     </div>
   </div>
 </v-app>

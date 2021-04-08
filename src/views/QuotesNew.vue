@@ -17,13 +17,13 @@
               <validation-provider
                 v-slot="{ errors }"
                 name="Name"
-                rules="required|max:10"
+                rules="required|max:50"
               >
                 <v-text-field
                   v-model="newClientName"
                   label="Full Name"
                   id="clientName"
-                  :counter="10"
+                  :counter="50"
                   :error-messages="errors"
                   required>
                 </v-text-field>
@@ -40,18 +40,12 @@
               <validation-provider
                 v-slot="{ errors }"
                 name="phoneNumber"
-                :rules="{
-                  required: true,
-                  digits: 7,
-                  regex: '^(71|72|74|76|81|82|84|85|86|87|88|89)\\d{5}$'
-                }"
               >
                 <v-text-field
                   type="tel"
                   v-model="newPhone"
                   label="Phone Number"
                   id="phone"
-                  :counter="7"
                   :error-messages="errors"
                   required>
                 </v-text-field>
@@ -188,8 +182,8 @@
                 </v-row>
                 <v-row>
                   <v-radio-group v-model="newScreenRemoval" id="screenRemoval" label="Will the screens from the windows need to be removed and tracks cleaned?">
-                    <v-radio color="blue" :value="true" label="Yes">Yes</v-radio>
-                    <v-radio color="blue" :value="false" label="No">No</v-radio>
+                    <v-radio color="blue" value="true" label="Yes">Yes</v-radio>
+                    <v-radio color="blue" value="false" label="No">No</v-radio>
                   </v-radio-group>
                 </v-row>
                 <v-row>
@@ -232,8 +226,8 @@
                 </v-row>
                 <v-row>
                    <v-radio-group v-model="newDriveway" id="driveway" label="Is this a driveway?">
-                    <v-radio color="blue" :value="true" label="Yes">Yes</v-radio>
-                    <v-radio color="blue" :value="false" label="No">No</v-radio>
+                    <v-radio color="blue" value="true" label="Yes">Yes</v-radio>
+                    <v-radio color="blue" value="false" label="No">No</v-radio>
                   </v-radio-group>
                 </v-row>
                 <v-row>
@@ -339,17 +333,17 @@ export default {
       newPitchOfRoof: "",
       newGutterSqft: "",
       newExtMaterial: "",
-      newScreenRemoval: false,
+      newScreenRemoval: "",
       newDoorMaterial: "",
       newFltSurfaceSqft: "",
-      newDriveway: false,
+      newDriveway: "",
       newDrivewaySize: "",
       newComments: "",
-      newBuildingWash: false,
-      newRustRemoval: false,
-      newRoofServices: false,
-      newGutterCleaning: false,
-      newFlatSurfaces: false,
+      newBuildingWash: "",
+      newRustRemoval: "",
+      newRoofServices: "",
+      newGutterCleaning: "",
+      newFlatSurfaces: "",
       checkedServices: [],
       // Types of services
       services: [
@@ -433,14 +427,14 @@ export default {
         floors: this.newFloors,
         buildingSqft: this.newBuildingSqft,
         garage: this.newGarage,
-        roofServices: this.roofServices,
+        roofServices: this.newRoofServices,
         roofMaterial: this.newRoofMaterial,
         pitchOfRoof: this.newPitchOfRoof,
-        gutterCleaning: this.gutterCleaning,
-        gutterSqft: this.gutterSqft,
-        buildingWash: this.buildingWash,
+        gutterCleaning: this.newGutterCleaning,
+        gutterSqft: this.newGutterSqft,
+        buildingWash: this.newBuildingWash,
         extMaterial: this.newExtMaterial,
-        screenRemoval: this.screenRemoval,
+        screenRemoval: this.newScreenRemoval,
         doorMaterial: this.newDoorMaterial,
         flatSurfaces: this.newFlatSurfaces,
         fltSurfaceSqft: this.newFltSurfaceSqft,
@@ -449,6 +443,7 @@ export default {
         rustRemoval: this.newRustRemoval,
         comments: this.newComments,
       };
+      console.log("params:", params);
       axios
         .post("/api/quotes", params)
         .then((response) => {
