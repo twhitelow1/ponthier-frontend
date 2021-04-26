@@ -19,13 +19,26 @@
             Quote Status:
           </v-col>
           <v-col class="text-center" >
-            {{quote.status}}
+            <v-select 
+                        :items="statuses" 
+                        v-model="quote.status" 
+                        id="status" 
+                        label=""
+                        :change="updateQuote(quote)"
+                        >
+                    </v-select>
           </v-col>
           <v-col class="text-center"  >
             Quoted Price:
           </v-col>
           <v-col class="text-center" >
-            {{quote.price}}
+            <v-text-field
+              dense
+              v-model="quote.price"
+              :change="updateQuote(quote)"
+            >
+            {{parseFloat(quote.price).toFixed(2)}}
+            </v-text-field>
           </v-col>
         </v-row>
       </v-container>     
@@ -272,6 +285,7 @@ export default {
   data: function () {
     return {
       quote: {},
+      statuses: ["submitted", "reviewed", "finalized"],
     };
   },
   created: function () {
@@ -280,6 +294,21 @@ export default {
       this.quote = response.data;
     });
   },
-  methods: {},
+  methods: {
+    updateQuote: function (quote) {
+      var params = {
+        status: quote.status,
+        price: quote.price,
+      };
+      axios
+        .patch("/api/quotes/" + quote.id, params)
+        .then((response) => {
+          console.log("quote update", response);
+        })
+        .catch((error) => {
+          console.log("quote update error", error.response);
+        });
+    },
+  },
 };
 </script>
