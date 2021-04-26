@@ -43,9 +43,9 @@
               </div>
             </div>
           </form>
+          </div>
         </div>
       </div>
-    </div>
     <!--End Contact-->
 </template>
 <script>
