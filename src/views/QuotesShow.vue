@@ -297,8 +297,10 @@ export default {
   methods: {
     updateQuote: function (quote) {
       var params = {
-        status: quote.status,
-        price: quote.price,
+        user: {
+          status: quote.status,
+          price: quote.price,
+        },
       };
       axios
         .patch("/api/quotes/" + quote.id, params)
