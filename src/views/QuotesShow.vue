@@ -303,7 +303,7 @@ export default {
         },
       };
       axios
-        .patch("/api/quotes/" + quote.id, params)
+        .patch("https://tranquil-lake-49156.herokuapp.com/api/quotes/" + quote.id, params)
         .then((response) => {
           console.log("quote update", response);
         })
