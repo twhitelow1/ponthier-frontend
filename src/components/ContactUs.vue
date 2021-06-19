@@ -8,8 +8,8 @@
           <a href="/quote"><p class="text-center text-warning h5">Click This Link For A Free Quote</p></a><br>
         </div>
       </div>
-      <div class="row justify-content-center">
-        <div class="form-container col-sm">
+      <div class="row" style="width:50%; margin:auto;">
+        <div class="col-sm justify-content-center">
           <form class="form-container" method="POST" action="https://formspree.io/myynqrqp">
             <div class="form-group row">
               <label class="col-form-label col-4" for="name">Name: </label>
