@@ -1,7 +1,7 @@
 <template>
   <!--Start Contact-->
     <div class="container-fluid" id="contact">
-      <div class="row justify-content-center">
+      <div class="row justify-content-center" style="width: 50%; margin:auto;">
         <div class="col-sm">
           <h2 class="text-center py-4">Contact Us</h2>
           <p class="text-center h4">This form if for general inquiries.</p>
