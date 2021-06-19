@@ -10,7 +10,7 @@ import { faUserSecret } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 // axios.defaults.baseURL = process.env.NODE_ENV === "development" ? "https://tranquil-lake-49156.herokuapp.com/" : "/";
-axios.defaults.baseURL = process.env.NODE_ENV === "production" ? "tranquil-lake-49156.herokuapp.com" : "/";
+axios.defaults.baseURL = process.env.NODE_ENV === "production" ? "https://tranquil-lake-49156.herokuapp.com" : "/";
 
 // Set up FontAwesome
 library.add(faUserSecret);
